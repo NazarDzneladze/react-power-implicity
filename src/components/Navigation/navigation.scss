@@ -1,0 +1,113 @@
+@mixin ralewayFont($fw, $fz, $lh) {
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: $fw;
+	font-size: $fz;
+	line-height: $lh;
+}
+
+.navigation {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	margin-bottom: 184px;
+	padding: 0px 32px;
+	column-gap: 32px;
+
+	&__link-logo {
+		justify-self: start;
+	}
+
+	&__nav {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		column-gap: 63px;
+		justify-self: center;
+		.navigation__nav-link {
+			justify-self: center;
+			color: #a0a3a7;
+			@include ralewayFont(700, 14px, 16px);
+		}
+	}
+
+	&__button {
+		justify-self: end;
+		padding: 16px 24px;
+		min-width: 159px;
+		cursor: pointer;
+		border: none;
+		background: linear-gradient(93.22deg, #e1e1e1 8.37%, #ffffff 99.95%);
+		box-shadow: 0px 4px 50px rgba(37, 37, 37, 0.08), inset 1px 1px 1px rgba(135, 135, 135, 0.32);
+		border-radius: 999px;
+	}
+
+	&__burger {
+		display: none;
+		width: 40px;
+		height: 24px;
+		cursor: pointer;
+
+		.burger-line1,
+		.burger-line2,
+		.burger-line3 {
+			width: 36px;
+			height: 3px;
+			background-color: #000;
+			margin: 5px 0;
+			background: #a9a9a9;
+		}
+	}
+}
+
+@media (max-width: 825px) {
+	.navigation {
+		grid-template-columns: 0.2fr 0.6fr 0.2fr;
+		padding: 0px 8px;
+		column-gap: 8px;
+		&__nav {
+			display: none;
+			// justify-self: center;
+		}
+
+		&__button {
+			justify-self: center;
+		}
+
+		&__burger {
+			display: block;
+			justify-self: end;
+		}
+	}
+}
+
+@media (max-width: 426px) {
+	.navigation {
+		grid-template-columns: 0.2fr 0.8fr;
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-areas: 
+		"logo burger"
+		"button button";
+		column-gap: 0px;
+		row-gap: 7px;
+
+		&__link-logo {
+			justify-self: center;
+			grid-area: logo;
+		}
+
+		&__button {
+			grid-area: button;
+			justify-self: center;
+		}
+
+		&__burger{
+			grid-area: burger;
+		}
+
+		&__nav {
+			grid-template-columns: 100%;
+			grid-template-rows: repeat(3, 1fr);
+			row-gap: 25px;
+		}
+	}
+}

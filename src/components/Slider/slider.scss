@@ -1,0 +1,96 @@
+@mixin ralewayFont($fw, $fz, $lh) {
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: $fw;
+	font-size: $fz;
+	line-height: $lh;
+}
+
+@mixin robotoFont($fz, $lh) {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 700;
+	font-size: $fz;
+	line-height: $lh;
+}
+
+%slider-text {
+	text-align: center;
+	color: #f2f4f7;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.slider {
+	padding: 0px 5px;
+
+	.slider__content {
+		max-width: 598px;
+		margin: 0 auto;
+		text-align: center;
+
+		.slider__title {
+			@include robotoFont(72px, 83px);
+			@extend %slider-text;
+			margin-bottom: 32px;
+		}
+
+		.slider__subtitle {
+			@include ralewayFont(400, 18px, 21px);
+			@extend %slider-text;
+			margin-bottom: 80px;
+		}
+
+		.slider__button {
+			background: linear-gradient(124.53deg, #fc3f5f 0%, #ea4476 14.13%, #7d61ff 100.32%);
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+
+			border: 2px solid transparent;
+			margin-bottom: 64px;
+			padding: 16px 32px;
+			min-width: 239px;
+			border-image-slice: 1;
+			border-image-source: linear-gradient(124.53deg, #fc3f5f 0%, #ea4476 14.13%, #7d61ff 100.32%);
+		}
+	}
+
+	.slider__dots {
+		display: flex;
+		justify-content: center;
+		gap: 25px;
+		padding: 16px;
+
+		.slider__dot {
+			width: 16px;
+			height: 16px;
+			border: 3.5px solid rgba(196, 196, 196, 0.16);
+			background-color: transparent;
+			border-radius: 50%;
+		}
+
+		.slider__dot--active {
+			border-color: white;
+		}
+	}
+}
+
+@media (max-width: 825px) {
+	.slider {
+		.slider__content {
+			.slider__title {
+				@include robotoFont(50px, 50px);
+			}
+		}
+	}
+}
+
+@media (max-width: 426px) {
+	.slider {
+		.slider__content {
+			.slider__title {
+				@include robotoFont(36px, 36px);
+			}
+		}
+	}
+}
